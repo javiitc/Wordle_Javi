@@ -14,7 +14,8 @@ public class Juego {
             String palabra = respuesta
                     .replace("[", "")
                     .replace("]", "")
-                    .replace("\"", "");
+                    .replace("\"", "")
+                    .toUpperCase();
 
 
         } catch (Exception e) {

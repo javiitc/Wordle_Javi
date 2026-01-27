@@ -24,5 +24,11 @@ public class Main {
                 "ROJO: La letra no existe");
 
         String palabraSecreta = "";
+        int intento = 0;
+        int [][] intentos = new int[6][5];
+
+        final String VERDE = "\u001B[42m";
+        final String AMARILLO = "\u001B[43m";
+        final String ROJO = "\\u001B[41m";
     }
 }
