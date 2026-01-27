@@ -1,8 +1,11 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,26 +14,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
 
-        try {
-            URL url = new URL ("https://random-word-api.herokuapp.com/word?lang=es&length=5");
-            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+        System.out.println("=======================");
+        System.out.println("        WORDLE");
+        System.out.println("=======================");
+        System.out.println("Dispones de 6 intentos para adivinar la palabra");
+        System.out.println("Recuerda: \n" +
+                "VERDE: La letra esta en el sitio correcto \n" +
+                "AMARILLO: La letra existe pero no esta en el sitio correcto \n" +
+                "ROJO: La letra no existe");
 
-            String respuesta = br.readLine();
-            br.close();
-
-            String palabra = respuesta
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace("\"", "");
-
-            System.out.println(palabra);
-
-
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        String palabraSecreta = "";
     }
 }
