@@ -24,12 +24,15 @@ public class Main {
                 "ROJO: La letra no existe");
 
         String palabraSecreta = juego.obtenerPalabra();
-        int intento = 0;
+        int intentoActual = 0;
         int intentosMax = 6;
         String [] intentoPalabra = new  String[intentosMax];
         int [][] coloresLetra = new int[intentosMax][5];
+        System.out.println("Palabra generada!");
 
-        while (intento < intentosMax) {
+        while (intentoActual < intentosMax) {
+
+            String intento =  sc.nextLine();
 
         }
 

@@ -41,12 +41,41 @@ public class Juego {
                         break;
                     case 1:
                         color = AMARILLO;
-                        break:
+                        break;
                     case 2:
                         color =  ROJO;
                         break;
                 }
             }
         }
+    }
+
+    public static int [] comparacionPalabras (String intento, String palabraSecreta) {
+
+        int [] resultado = new int[5];
+        boolean [] letraUsada = new boolean[5];
+
+        for  (int i = 0; i < 5; i++) {
+            if (intento.charAt(i) == palabraSecreta.charAt(i)) {
+                resultado[i] = 0;
+                letraUsada[i] = true;
+            } else if (intento.charAt(i) != palabraSecreta.charAt(i)) {
+                resultado[i] = 2;
+            }
+        }
+
+        for (int i = 0; i < 5; i++) {
+            if (resultado[i] == 0) {
+                continue;
+            }
+            for (int j = 0; j < 5; j++) {
+                if (!letraUsada[j] && intento.charAt(i) == palabraSecreta.charAt(j)) {
+                    resultado[i] = 1;
+                    letraUsada[j] = true;
+                    break;
+                }
+            }
+        }
+        return resultado;
     }
 }
