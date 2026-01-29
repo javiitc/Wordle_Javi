@@ -33,11 +33,17 @@ public class Main {
 
         while (intentoActual < intentosMax && !ganador) {
 
-            String intento =  sc.nextLine();
+            String intento =  sc.nextLine().toUpperCase();
+
+            if (!juego.palabraValida(intento)) {
+                continue;
+            }
+
+            intentoPalabra[intentoActual] = intento;
             int [] resultado = juego.comparacionPalabras (intento,  palabraSecreta);
             coloresLetra[intentoActual] = resultado;
 
-            juego.tablero(coloresLetra, intentoActual);
+            juego.tablero(intentoPalabra, coloresLetra, intentoActual);
 
             if (intento.equals(palabraSecreta)) {
                 System.out.println("Enhorabuena! Has adivinado la palabra!");

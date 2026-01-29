@@ -31,7 +31,7 @@ public class Juego {
         final String VERDE = "\u001B[42m\u001B[37m";
         final String AMARILLO = "\u001B[43m\u001B[30m";
         final String ROJO = "\u001B[41m\u001B[37m";
-        final String GRIS = "\u001B[42m\u001B[37m";
+        final String GRIS = "\u001B[47m\u001B[30m";
         final String RESET = "\u001B[0m";
 
         for (int i = 0; i < 6; i++) {
@@ -51,11 +51,11 @@ public class Juego {
                             color =  ROJO;
                             break;
                     }
-                    System.out.println(color + palabra.charAt(j) + " " + RESET + " ");
+                    System.out.print(color + palabra.charAt(j) + " " + RESET + " ");
                 }
             } else {
                 for (int j = 0; j < 5; j++) {
-                    System.out.println(GRIS + " _ " + RESET + " ");
+                    System.out.print(GRIS + " _ " + RESET + " ");
                 }
             }
             System.out.println();
@@ -96,8 +96,9 @@ public class Juego {
             System.out.println("La palabra tine que ser de 5 letras. Intentelo de nuevo");
             return false;
         }
-        if (!palabra.matches("[a-zA-Z]")) {
+        if (!palabra.matches("[a-zA-Z]+")) {
             System.out.println("Solo se permiten letras. Intentelo de nuevo ");
+            return false;
         }
         return true;
     }
