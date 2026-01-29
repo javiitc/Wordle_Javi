@@ -10,9 +10,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Random random = new Random();
+        Juego juego = new Juego();
 
         System.out.println("=======================");
         System.out.println("        WORDLE");
@@ -23,12 +23,15 @@ public class Main {
                 "AMARILLO: La letra existe pero no esta en el sitio correcto \n" +
                 "ROJO: La letra no existe");
 
-        String palabraSecreta = "";
+        String palabraSecreta = juego.obtenerPalabra();
         int intento = 0;
-        int [][] intentos = new int[6][5];
+        int intentosMax = 6;
+        String [] intentoPalabra = new  String[intentosMax];
+        int [][] coloresLetra = new int[intentosMax][5];
 
-        final String VERDE = "\u001B[42m";
-        final String AMARILLO = "\u001B[43m";
-        final String ROJO = "\\u001B[41m";
+        while (intento < intentosMax) {
+
+        }
+
     }
 }
