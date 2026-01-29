@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.sql.SQLOutput;
 
 public class Juego {
     public String obtenerPalabra() {
@@ -27,26 +28,37 @@ public class Juego {
 
     public static void tablero (String [] intentoPalabra, int [][] coloresLetra, int intento) {
 
-        final String VERDE = "\u001B[42m";
-        final String AMARILLO = "\u001B[43m";
-        final String ROJO = "\\u001B[41m";
+        final String VERDE = "\u001B[42m\u001B[37m";
+        final String AMARILLO = "\u001B[43m\u001B[30m";
+        final String ROJO = "\u001B[41m\u001B[37m";
+        final String GRIS = "\u001B[42m\u001B[37m";
+        final String RESET = "\u001B[0m";
 
         for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 5; j++) {
-                String color = "";
+            if (i <= intento) {
+                String palabra = intentoPalabra[i];
 
-                switch (coloresLetra[i][j]) {
-                    case 0:
-                        color = VERDE;
-                        break;
-                    case 1:
-                        color = AMARILLO;
-                        break;
-                    case 2:
-                        color =  ROJO;
-                        break;
+                for (int j = 0; j < 5; j++) {
+                    String color = "";
+                    switch (coloresLetra[i][j]) {
+                        case 0:
+                            color = VERDE;
+                            break;
+                        case 1:
+                            color = AMARILLO;
+                            break;
+                        case 2:
+                            color =  ROJO;
+                            break;
+                    }
+                    System.out.println(color + palabra.charAt(j) + " " + RESET + " ");
+                }
+            } else {
+                for (int j = 0; j < 5; j++) {
+                    System.out.println(GRIS + " _ " + RESET + " ");
                 }
             }
+            System.out.println();
         }
     }
 
@@ -77,5 +89,16 @@ public class Juego {
             }
         }
         return resultado;
+    }
+
+    public static boolean palabraValida (String palabra) {
+        if  (palabra.length() != 5) {
+            System.out.println("La palabra tine que ser de 5 letras. Intentelo de nuevo");
+            return false;
+        }
+        if (!palabra.matches("[a-zA-Z]")) {
+            System.out.println("Solo se permiten letras. Intentelo de nuevo ");
+        }
+        return true;
     }
 }

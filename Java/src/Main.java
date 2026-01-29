@@ -29,11 +29,21 @@ public class Main {
         String [] intentoPalabra = new  String[intentosMax];
         int [][] coloresLetra = new int[intentosMax][5];
         System.out.println("Palabra generada!");
+        boolean ganador = false;
 
-        while (intentoActual < intentosMax) {
+        while (intentoActual < intentosMax && !ganador) {
 
             String intento =  sc.nextLine();
+            int [] resultado = juego.comparacionPalabras (intento,  palabraSecreta);
+            coloresLetra[intentoActual] = resultado;
 
+            juego.tablero(coloresLetra, intentoActual);
+
+            if (intento.equals(palabraSecreta)) {
+                System.out.println("Enhorabuena! Has adivinado la palabra!");
+                ganador = true;
+            }
+            intentoActual++;
         }
 
     }
