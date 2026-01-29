@@ -50,6 +50,9 @@ public class Main {
                 ganador = true;
             }
             intentoActual++;
+            if (intentoActual == intentosMax) {
+                System.out.println("Bruh, es adivinar una palabra y ni eso has podido?");
+            }
         }
 
     }
